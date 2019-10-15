@@ -1,6 +1,11 @@
 {
-  "extends": ["tslint", "tslint-react", "tslint-config-prettier"],
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "rulesDirectory": ["tslint-plugin-prettier"],
   "rules": {
+    "object-literal-sort-keys": false,
+    "interface-over-type-literal": false,
+    "ordered-imports": false,
+    "prettier": true,
     "align": [true, "parameters", "statements"],
     "jsx-alignment": false,
     "ban": false,
