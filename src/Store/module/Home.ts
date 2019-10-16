@@ -7,19 +7,19 @@ export const HomeAction = {
       payload: {
         str,
       },
-    } as const;
+    };
   },
 };
 
 export type HomeState = Readonly<{
-  start: string;
+  hello: string;
 }>;
 
 type initHomeActions = ReturnType<typeof HomeAction.homeinit>;
 type Action = initHomeActions;
 
 const initState: HomeState = {
-  start: 'hello',
+  hello: 'hello',
 };
 
 export default function reducer(
@@ -30,7 +30,7 @@ export default function reducer(
     case HOME:
       return {
         ...state,
-        start: action.payload.str,
+        hello: action.payload.str,
       };
 
     default:
