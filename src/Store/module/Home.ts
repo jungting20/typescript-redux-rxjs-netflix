@@ -1,9 +1,9 @@
-const HOME = 'home/INIT';
+const Home = 'home/INIT';
 
 export const HomeAction = {
   homeinit: (str: string) => {
     return {
-      type: HOME,
+      type: Home,
       payload: {
         str,
       },
@@ -12,14 +12,14 @@ export const HomeAction = {
 };
 
 export type HomeState = Readonly<{
-  hello: string;
+  echohello: string;
 }>;
 
 type initHomeActions = ReturnType<typeof HomeAction.homeinit>;
 type Action = initHomeActions;
 
 const initState: HomeState = {
-  hello: 'hello',
+  echohello: '시작정호',
 };
 
 export default function reducer(
@@ -27,10 +27,10 @@ export default function reducer(
   action: Action
 ): HomeState {
   switch (action.type) {
-    case HOME:
+    case Home:
       return {
         ...state,
-        hello: action.payload.str,
+        echohello: action.payload.str,
       };
 
     default:

@@ -6,7 +6,8 @@ import rootReducer from './Store/index';
 import { Provider } from 'react-redux';
 
 const reducerInitializedStore = createStore(rootReducer);
-console.log(reducerInitializedStore.getState(), '인생');
+
+console.log(reducerInitializedStore.getState(), 'asdsadsad');
 
 render(
   <Provider store={reducerInitializedStore}>
