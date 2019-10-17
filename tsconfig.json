@@ -12,10 +12,7 @@
     "allowSyntheticDefaultImports": true,
     "keyofStringsOnly": true
   },
-  "typeRoots": [
-    "node_modules/@types",
-    "src/@type"
-  ],
+  "typeRoots": ["node_modules/@types", "src/@type"],
   "exclude": [
     "node_modules",
     "build",
@@ -29,10 +26,10 @@
   "plugins": [
     {
       "name": "typescript-tslint-plugin"
+    },
+    {
+      "name": "typescript-styled-plugin"
     }
   ],
-  "include": [
-    "./src/**/*",
-    "@type"
-  ]
+  "include": ["./src/**/*", "@type"]
 }

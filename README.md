@@ -16,6 +16,14 @@
 
 `npm install --save-dev typescript ts-loader source-map-loader`
 
+#ts styled plugin
+
+```
+npm install --save styled-components
+vscode 확장에서 styled 검색후 확장 다운로드
+npm install --save-dev typescript-styled-plugin
+```
+
 # tslint
 
 ```
