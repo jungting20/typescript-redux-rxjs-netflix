@@ -1,8 +1,14 @@
 import * as React from 'react';
-import HomeContainer from '../Router/Home/HomeContainer';
+import GlobalStyle from './GlobalStyle';
+import Route from './App';
 
-export default class App extends React.Component {
-  render() {
-    return <HomeContainer />;
+export default class APP extends React.Component {
+  public render() {
+    return (
+      <>
+        <Route />>
+        <GlobalStyle />
+      </>
+    );
   }
 }

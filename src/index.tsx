@@ -7,8 +7,6 @@ import { Provider } from 'react-redux';
 
 const reducerInitializedStore = createStore(rootReducer);
 
-console.log(reducerInitializedStore.getState(), 'asdsadsad');
-
 render(
   <Provider store={reducerInitializedStore}>
     <App />
