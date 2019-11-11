@@ -1,11 +1,16 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { createEpicMiddleware } from 'redux-observable';
 import App from './Component/App';
 import rootReducer from './Store/index';
 import { Provider } from 'react-redux';
 
-const reducerInitializedStore = createStore(rootReducer);
+const epcimiddleware = createEpicMiddleware();
+const reducerInitializedStore = createStore(
+  rootReducer,
+  applyMiddleware(epcimiddleware)
+);
 
 render(
   <Provider store={reducerInitializedStore}>

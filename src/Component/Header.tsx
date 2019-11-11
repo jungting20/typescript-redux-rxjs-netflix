@@ -16,10 +16,6 @@ const Header = styled.header`
   box-shadow: 0px 1px 5px 2px rgba(20, 20, 20, 0.8);
 `;
 
-interface ItemProps {
-  current: boolean;
-}
-
 const List = styled.ul`
   display: flex;
 `;
@@ -29,7 +25,8 @@ const Item = styled.li`
   text-align: center;
   height: 50px;
   border-bottom: 5px solid
-    ${(props: ItemProps) => (props.current ? '#3498db' : 'transeparent')};
+    ${(props: CustomPropsTypes.ItemProps) =>
+      props.current ? '#3498db' : 'transeparent'};
   transition: border-bottom 0.5s ease-in-out;
 `;
 
