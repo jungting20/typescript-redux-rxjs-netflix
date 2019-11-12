@@ -5,5 +5,6 @@ declare namespace StateType {
     popular: ApiType.Content[];
     error: string;
     loading: boolean;
+    home?: any;
   }>;
 }

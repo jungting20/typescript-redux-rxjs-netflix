@@ -15,6 +15,7 @@ const HomePresenter = ({
   popular,
   loading,
   error,
+  home,
 }: StateType.HomeState) =>
   loading ? null : (
     <Container>

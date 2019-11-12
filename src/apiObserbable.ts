@@ -9,7 +9,7 @@ const api = axios.create({
   },
 });
 const apitoobj = (apiinstance: AxiosInstance) => (type: string) =>
-  apiinstance.get(type).then(a => ({ type, data: a }));
+  apiinstance.get(type).then(({ data }) => ({ type, results: data.results }));
 const apiChangeresult = apitoobj(api);
 
 export const moviesApiObservable = {
