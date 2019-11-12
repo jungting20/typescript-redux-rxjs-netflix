@@ -1,6 +1,6 @@
 import { moviesApi } from '../../api';
-import { ofType } from 'redux-observable';
-import { switchMap, tap } from 'rxjs/operators';
+import { ofType, Epic } from 'redux-observable';
+import { switchMap, tap, map } from 'rxjs/operators';
 import { moviesApiObservable } from '../../apiObserbable';
 import { merge, Observable } from 'rxjs';
 
@@ -9,10 +9,6 @@ const getHomemovie$ = merge(
   moviesApiObservable.popular(),
   moviesApiObservable.upcoming()
 );
-
-const getAllMovieEpic = actions$ => {
-  actions$.pipe();
-};
 
 export enum HomeActionEnum {
   GET_NOWPLAYING = 'home/GET_NOWPLAYING',
@@ -25,6 +21,12 @@ export enum HomeActionEnum {
   SET_TOTALMOVIE = 'home/SET_TOTALMOVIE',
 }
 
+export const getAllMovieEpic: Epic = actions$ =>
+  actions$.pipe(
+    ofType(HomeActionEnum.GET_TOTALMOVIE),
+    tap(a => console.log('dpd')),
+    map(a => a)
+  );
 export const HomeActions = {
   get_nowplaying: () => ({
     type: HomeActionEnum.GET_NOWPLAYING,
@@ -63,6 +65,7 @@ export default function reducer(
 ): StateType.HomeState {
   switch (action.type) {
     case HomeActionEnum.GET_TOTALMOVIE:
+      console.log('total');
       return {
         ...state,
         loading: true,

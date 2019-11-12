@@ -7,7 +7,9 @@ class HomeContainer extends React.Component<
   CustomPropsTypes.HomeContainerProps
 > {
   public render() {
+    console.log(this.props);
     const { value } = this.props;
+
     return (
       <HomePresenter
         nowPlaying={null}
@@ -25,7 +27,7 @@ class HomeContainer extends React.Component<
 const mapStateToProps = ({ Home }: Moduletype.State) => Home;
 
 const dispatchAction = dispatch => ({
-  home: (str: string) => dispatch(HomeActions.homeinit(str)),
+  home: (str: string) => dispatch(HomeActions.get_total()),
 });
 
 export default connect(
