@@ -25,6 +25,7 @@ export enum HomeActionEnum {
   SET_UPCOMING = 'home/SET_UPCOMING',
   SET_POPULAR = 'home/SET_POPULAR',
   SET_TOTALMOVIE = 'home/SET_TOTALMOVIE',
+  SHOW_LOADING = 'home/SHOW_LOADING',
 }
 
 export const HomeActions = {
@@ -45,10 +46,14 @@ export const HomeActions = {
     type: HomeActionEnum.SET_TOTALMOVIE,
     payload,
   }),
+  show_loaidng: () => ({
+    type: HomeActionEnum.SHOW_LOADING,
+  }),
 };
 export const getAllMovieEpic: Epic = actions$ =>
   actions$.pipe(
     ofType(HomeActionEnum.GET_TOTALMOVIE),
+    tap(() => console.log('인생')),
     switchMap(() =>
       mergeObservableToObj(
         moviesApiObservable.nowPlaying(),
@@ -59,25 +64,33 @@ export const getAllMovieEpic: Epic = actions$ =>
     map(a => HomeActions.set_total(a))
   );
 
-type Action = { type: string; payload?: any };
+type HomeActionType = {
+  type: string;
+  payload: {
+    now_playing: ApiType.Content[];
+    popular: ApiType.Content[];
+    upcoming: ApiType.Content[];
+    loading?: Boolean;
+  };
+};
 
 const initState: StateType.HomeState = {
   nowPlaying: null,
   upcoming: null,
   popular: null,
   error: null,
-  loading: true,
-  home: null,
+  loading: false,
 };
 
 export default function reducer(
   state: StateType.HomeState = initState,
-  action: Action
+  action: HomeActionType
 ): StateType.HomeState {
   switch (action.type) {
     case HomeActionEnum.GET_TEST:
-      console.log('test');
       return { ...state };
+    case HomeActionEnum.GET_TOTALMOVIE:
+      return { ...state, loading: true };
     case HomeActionEnum.SET_TOTALMOVIE:
       const { now_playing: nowPlaying, popular, upcoming } = action.payload;
       return {
@@ -85,6 +98,11 @@ export default function reducer(
         nowPlaying,
         popular,
         upcoming,
+      };
+    case HomeActionEnum.SHOW_LOADING:
+      console.log('show loading');
+      return {
+        ...state,
       };
 
     default:

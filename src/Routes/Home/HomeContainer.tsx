@@ -5,18 +5,18 @@ import HomePresenter from './HomePresenter';
 import { Dispatch } from 'redux';
 
 interface Props extends StateType.HomeState {
-  home: typeof HomeActions.get_total;
+  Homeinit: typeof HomeActions.get_total;
 }
 
 class HomeContainer extends React.Component<Props> {
   constructor(props) {
     super(props);
-    this.props.home();
+    this.props.Homeinit();
   }
 
   public render() {
-    const { nowPlaying, popular, upcoming, error, loading, home } = this.props;
-
+    const { nowPlaying, popular, upcoming, error, loading } = this.props;
+    console.log(loading);
     return (
       <HomePresenter
         nowPlaying={nowPlaying}
@@ -24,7 +24,6 @@ class HomeContainer extends React.Component<Props> {
         popular={upcoming}
         error={error}
         loading={loading}
-        home={home}
       />
     );
   }
@@ -36,7 +35,7 @@ const mapStateToProps = ({ Home }: Moduletype.State) => Home;
 // const mapStateToProps = status => status;
 
 const dispatchAction = (dispatch: Dispatch) => ({
-  home: () => dispatch(HomeActions.get_total()),
+  Homeinit: () => dispatch(HomeActions.get_total()),
   test: () => dispatch(HomeActions.get_test()),
 });
 
