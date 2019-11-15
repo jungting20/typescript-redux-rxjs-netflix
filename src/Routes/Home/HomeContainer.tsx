@@ -11,12 +11,14 @@ interface Props extends StateType.HomeState {
 class HomeContainer extends React.Component<Props> {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
     this.props.Homeinit();
   }
 
   public render() {
     const { nowPlaying, popular, upcoming, error, loading } = this.props;
-    console.log(loading);
     return (
       <HomePresenter
         nowPlaying={nowPlaying}

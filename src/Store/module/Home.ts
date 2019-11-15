@@ -46,14 +46,10 @@ export const HomeActions = {
     type: HomeActionEnum.SET_TOTALMOVIE,
     payload,
   }),
-  show_loaidng: () => ({
-    type: HomeActionEnum.SHOW_LOADING,
-  }),
 };
 export const getAllMovieEpic: Epic = actions$ =>
   actions$.pipe(
     ofType(HomeActionEnum.GET_TOTALMOVIE),
-    tap(() => console.log('인생')),
     switchMap(() =>
       mergeObservableToObj(
         moviesApiObservable.nowPlaying(),
@@ -98,11 +94,7 @@ export default function reducer(
         nowPlaying,
         popular,
         upcoming,
-      };
-    case HomeActionEnum.SHOW_LOADING:
-      console.log('show loading');
-      return {
-        ...state,
+        loading: false,
       };
 
     default:
